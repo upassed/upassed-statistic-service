@@ -1,0 +1,28 @@
+env: "testing"
+application_name: upassed-statistic-service
+grpc_server:
+    port: "44044"
+    timeout: 10m
+services:
+    authentication_service:
+        host: localhost
+        port: 44045
+    form_service:
+        host: localhost
+        port: 44044
+    submission_service:
+        host: localhost
+        port: 44048
+timeouts:
+    endpoint_execution_timeout_ms: 60000
+tracing:
+    host: localhost
+    port: 14268
+    statistic_tracer_name: statistic-tracer
+redis:
+    user: default
+    password: password
+    host: localhost
+    port: 6379
+    database_number: 0
+    entity_ttl: 5m

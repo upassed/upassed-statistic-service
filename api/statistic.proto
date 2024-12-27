@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package api;
+
+import "validate/validate.proto";
+
+option go_package = "upassed.statistic.v1;client";
+
+service Statistic {
+  rpc GetStudentFormResult(StudentFormResultRequest) returns (StudentFormResultResponse);
+}
+
+message StudentFormResultRequest {
+  string student_username = 1 [(validate.rules).string = {min_len: 4, max_len: 30}];
+  string form_id = 2 [(validate.rules).string.uuid = true];
+}
+
+message StudentFormResultResponse {
+  bool passed = 1;
+}

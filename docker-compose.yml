@@ -1,0 +1,8 @@
+services:
+  redis:
+    image: redis:7.4
+    container_name: upassed_statistic_service_redis
+    environment:
+      - REDIS_PASSWORD=password
+    ports:
+      - "6380:6379"

@@ -1,0 +1,28 @@
+env: "local"
+application_name: upassed-statistic-service
+grpc_server:
+    port: ${GRPC_SERVER_PORT}
+    timeout: ${GRPC_SERVER_TIMEOUT}
+services:
+    authentication_service:
+        host: ${AUTHENTICATION_SERVICE_HOST}
+        port: ${AUTHENTICATION_SERVICE_PORT}
+    form_service:
+        host: ${FORM_SERVICE_HOST}
+        port: ${FORM_SERVICE_PORT}
+    submission_service:
+        host: ${SUBMISSION_SERVICE_HOST}
+        port: ${SUBMISSION_SERVICE_PORT}
+timeouts:
+    endpoint_execution_timeout_ms: ${ENDPOINT_EXECUTION_TIMEOUT_MS}
+tracing:
+    host: ${JAEGER_HOST}
+    port: ${JAEGER_PORT}
+    statistic_tracer_name: ${STATISTIC_TRACER_NAME}
+redis:
+    user: ${REDIS_USER}
+    password: ${REDIS_PASSWORD}
+    host: ${REDIS_HOST}
+    port: ${REDIS_PORT}
+    database_number: ${REDIS_DATABASE_NUMBER}
+    entity_ttl: ${REDIS_ENTITY_TTL}
