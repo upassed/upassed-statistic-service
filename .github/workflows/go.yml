@@ -1,0 +1,55 @@
+name: go microservice workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Set up Go environment
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: 1.23  # Set the Go version according to your needs
+
+      # Install dependencies
+      - name: Install dependencies
+        run: go mod tidy
+
+      # Build the project
+      - name: Build the project
+        run: go build ./...
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build  # This ensures the test job runs only after the build job completes successfully
+
+    steps:
+      # Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Set up Go environment
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: 1.23
+
+      # Install dependencies
+      - name: Install dependencies
+        run: go mod tidy
+
+      # Run unit tests
+      - name: Run tests
+        run: go test -v ./...

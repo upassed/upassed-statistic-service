@@ -1,0 +1,12 @@
+version: "3"
+
+tasks:
+    run-local:
+        desc: "Run service on a local machine"
+        cmds:
+            - go run ./cmd/main.go --config ./config/local.yml
+    test:
+        desc: "Run all rests"
+        cmds:
+            - go clean -testcache
+            - gotestsum --format-hide-empty-pkg --format-icons hivis -- -coverprofile=cover.out ./...
